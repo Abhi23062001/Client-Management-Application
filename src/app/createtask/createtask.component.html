@@ -1,0 +1,69 @@
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="form-control p-3 rounded shadow">
+    <div class="mb-3">
+        <label>
+            Task Id</label>
+        <input type="text" formControlName="taskId" class="form-control bg-light">
+        <div
+            *ngIf="projectForm.controls.taskId.invalid && (projectForm.controls.taskId.dirty || projectForm.controls.taskId.touched)">
+            <small class="text-danger">Task ID is required</small>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label>
+            Name</label>
+        <input type="text" formControlName="name" class="form-control bg-light">
+        <div
+            *ngIf="projectForm.controls.name.invalid && (projectForm.controls.name.dirty || projectForm.controls.name.touched)">
+            <small class="text-danger">Name is required</small>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label>
+            Description</label>
+        <textarea type="text" formControlName="discription" class="form-control bg-light"></textarea>
+        <div
+            *ngIf="projectForm.controls.discription.invalid && (projectForm.controls.discription.dirty || projectForm.controls.discription.touched)">
+            <small class="text-danger">Description is required</small>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>
+                Start Date</label>
+            <input type="date" formControlName="startDate" class="form-control bg-light">
+            <div
+                *ngIf="projectForm.controls.startDate.invalid && (projectForm.controls.startDate.dirty || projectForm.controls.startDate.touched)">
+                <small class="text-danger">Start Date is required</small>
+            </div>
+
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>
+                End Date</label>
+            <input type="date" formControlName="endDate" class="form-control bg-light">
+            <div
+                *ngIf="projectForm.controls.endDate.invalid && (projectForm.controls.endDate.dirty || projectForm.controls.endDate.touched)">
+                <small class="text-danger">End Date is required</small>
+            </div>
+
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>
+            Project</label>
+        <select formControlName="projectId" class="form-control bg-light">
+            <option *ngFor="let project of projects;" [value]="project.projectId">{{project.name}}</option>
+        </select>
+        <div
+            *ngIf="projectForm.controls.projectId.invalid && (projectForm.controls.projectId.dirty || projectForm.controls.projectId.touched)">
+            <small class="text-danger">Client is required</small>
+        </div>
+
+    </div>
+    <div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </div>
+</form>

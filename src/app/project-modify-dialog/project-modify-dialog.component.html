@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>Project Details</h2>
+<mat-dialog-content>
+    <div>
+        <form #projectForm="ngForm" (ngSubmit)="onSave(data)" novalidate>
+            <div class="mb-3">
+                <label for="clientId" class="form-label">Project ID</label>
+                <input type="text" class="form-control" style="width: 40rem;" id="projectId" name="clientId"
+                    [(ngModel)]="data.projectId" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.projectId.errors" class="text-danger">
+                    Client ID is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="data.name" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.name.errors" class="text-danger">
+                    Name is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="discription" class="form-label">Discription</label>
+                <textarea type="text" class="form-control" id="email" name="email" [(ngModel)]="data.discription"
+                    required></textarea>
+                <div *ngIf="projectForm.submitted && projectForm.controls.email.errors" class="text-danger">
+                    A valid discription is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="sdate" class="form-label">Start Date</label>
+                <input type="date" class="form-control" id="date" name="sdate" [(ngModel)]="data.startDate" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.sdate.errors" class="text-danger">
+                    A valid date is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="edate" class="form-label">End Date</label>
+                <input type="date" class="form-control" id="edate" name="edate" [(ngModel)]="data.endDate" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.edate.errors" class="text-danger">
+                    A valid date is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="clientId" class="form-label">Client Id</label>
+                <input class="form-control" id="clientId" name="clientId" [(ngModel)]="data.clientId" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.address.errors" class="text-danger">
+                    Client Id is required
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                [disabled]="projectForm.invalid">Save</button>
+        </form>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close class="btn btn-dark btn-sm">Close</button>
+</mat-dialog-actions>

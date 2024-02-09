@@ -1,0 +1,47 @@
+<form (ngSubmit)="sendUserDetails()" #registerForm="ngForm">
+    <div class="mb-3">
+        <label for="rname">Name</label>
+        <input type="text" id="rname" name="name" class="form-control bg-light" [(ngModel)]="userDetails.name"
+            #rn="ngModel" [class.is-invalid]="rn.touched&&rn.pristine" [class.is-valid]="rn.touched&&rn.dirty">
+        <span *ngIf="rn.touched&&rn.pristine" class="text-danger">Name is required</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="remail">Email</label>
+        <input type="email" id="remail" name="email" required class="form-control bg-light"
+            [(ngModel)]="userDetails.email" #re="ngModel" [class.is-invalid]="re.touched&&re.pristine"
+            [class.is-valid]="re.touched&&re.dirty">
+        <span *ngIf="re.touched&&re.pristine" class="text-danger">Email is required</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="rname">Phone</label>
+        <input type="number" id="rnumber" name="number" minlength="10" maxlength="10" class="form-control bg-light"
+            [(ngModel)]="userDetails.phone" #rph="ngModel" [class.is-invalid]="rph.touched&&rph.pristine"
+            [class.is-valid]="rph.touched&&rph.dirty">
+        <span *ngIf="rph.touched&&rph.pristine" class="text-danger">Phone is required</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="rpassword">Password</label>
+        <input type="password" id="rpassword" name="password" class="form-control bg-light"
+            [(ngModel)]="userDetails.password" #rp="ngModel" [class.is-invalid]="rp.touched&&rp.pristine"
+            [class.is-valid]="rp.touched&&rp.dirty">
+        <span *ngIf="rp.touched&&rp.pristine" class="text-danger">Password is required</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="rcpassword">ConfirmPassword</label>
+        <input type="password" id="rcpassword" minlength="8" required class="form-control bg-light" name="crpassowrd"
+            [(ngModel)]="confirmPassword" #cp="ngModel"
+            [class.is-invalid]="(userDetails.password!==confirmPassword)&&cp.touched || cp.touched&&cp.pristine"
+            [class.is-valid]="(userDetails.password===confirmPassword)&&cp.touched&&cp.dirty">
+        <span *ngIf="(userDetails.password!==confirmPassword)&&cp.touched" class="text-danger">Password does not
+            match</span>
+        <span *ngIf="(userDetails.password===confirmPassword)&&cp.touched&&cp.dirty" class="text-success">Password
+            matched</span>
+        <span *ngIf="cp.touched&&cp.pristine" class="text-danger">Please confirm password</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Meeting Details</h2>
+<mat-dialog-content>
+    <div>
+        <form #projectForm="ngForm" (ngSubmit)="onSave(data)" novalidate>
+            <div class="mb-3">
+                <label for="meetingId" class="form-label">Meeting ID</label>
+                <input type="text" class="form-control" style="width: 40rem;" id="meetingd" name="meetingId"
+                    [(ngModel)]="data.meetingId" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.meetingId.errors" class="text-danger">
+                    Meeting ID is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="clientId" class="form-label">Client ID</label>
+                <input type="text" class="form-control" id="clientId" name="clientId" [(ngModel)]="data.clientId"
+                    required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.clientId.errors" class="text-danger">
+                    Client ID is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="persons" class="form-label">Total Persons</label>
+                <input type="text" class="form-control" id="persons" name="persons"
+                    [(ngModel)]="data.totalNumberOfPerson" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.persons.errors" class="text-danger">
+                    Client ID is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Date and Time</label>
+                <input type="datetime-local" class="form-control" id="date" name="date" [(ngModel)]="data.dateTime"
+                    required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.date.errors" class="text-danger">
+                    A valid date and time is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <input class="form-control" id="status" name="status" [(ngModel)]="data.status" required>
+                <div *ngIf="projectForm.submitted && projectForm.controls.status.errors" class="text-danger">
+                    Status is required
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                [disabled]="projectForm.invalid">Save</button>
+        </form>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close class="btn btn-dark btn-sm">Close</button>
+</mat-dialog-actions>

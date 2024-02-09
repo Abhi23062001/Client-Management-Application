@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>Client Details</h2>
+<mat-dialog-content>
+    <div class="">
+        <form #clientForm="ngForm" (ngSubmit)="onSave(data)" novalidate>
+            <div class="mb-3">
+                <label for="clientId" class="form-label">Client ID</label>
+                <input type="text" class="form-control" style="width: 40rem;" id="clientId" name="clientId"
+                    [(ngModel)]="data.clientId" required>
+                <div *ngIf="clientForm.submitted && clientForm.controls.clientId.errors" class="text-danger">
+                    Client ID is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="data.name" required>
+                <div *ngIf="clientForm.submitted && clientForm.controls.name.errors" class="text-danger">
+                    Name is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="data.email" required>
+                <div *ngIf="clientForm.submitted && clientForm.controls.email.errors" class="text-danger">
+                    A valid email is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="data.phone" required>
+                <div *ngIf="clientForm.submitted && clientForm.controls.phone.errors" class="text-danger">
+                    A valid phone number is required
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" name="address" [(ngModel)]="data.address"
+                    required></textarea>
+                <div *ngIf="clientForm.submitted && clientForm.controls.address.errors" class="text-danger">
+                    Address is required
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="clientForm.invalid">Save</button>
+        </form>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close class="btn btn-dark btn-sm">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,52 @@
+<!-- page content -->
+<div class="container  mt-5">
+
+
+    <!-- login content -->
+    <div style="margin: 10rem 0 0 0;" *ngIf="!showRegister"></div>
+    <div class="d-flex">
+        <div class="d-flex">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black"
+                class="bi bi-bank mx-2 align-self-center" viewBox="0 0 16 16">
+                <path
+                    d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
+            </svg>
+            <p class="h1 text-uppercase align-self-center"
+                style="margin-right: 10rem; margin-top: 1rem; margin-left: 1rem;"> Client Vista
+            </p>
+        </div>
+
+        <div class="shadow p-4 bg-white" style="width: 45%;">
+            <app-registeruser *ngIf="showRegister"></app-registeruser>
+            <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" *ngIf="!showRegister" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control bg-light" id="username" name="username"
+                        [(ngModel)]="user.username" required>
+                    <div *ngIf="loginForm.submitted && loginForm.controls.username.errors" class="text-danger">
+                        Username is required
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control bg-light" id="password" name="password"
+                        [(ngModel)]="user.password" required>
+                    <div *ngIf="loginForm.submitted && loginForm.controls.password.errors" class="text-danger">
+                        Password is required
+                    </div>
+                </div>
+                <div class="">
+                    <button type="submit" class="btn btn-dark px-5 mx-5">Login</button>
+                    <button type="button" class="btn btn-primary px-5 mx-4" (click)="openRegister()">Register</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+<!-- footer -->
+<app-footer setStyle="position:fixed;bottom:0;"></app-footer>

@@ -1,0 +1,49 @@
+<form [formGroup]="meetingForm" (ngSubmit)="onSubmit()" class="form-control p-3 rounded shadow">
+    <div class=" mb-3">
+        <label> Meeting ID</label>
+        <input type="text" formControlName="meetingId" class="form-control bg-light">
+        <div
+            *ngIf="meetingForm.controls.meetingId.invalid && (meetingForm.controls.meetingId.dirty || meetingForm.controls.meetingId.touched)">
+            <small class="text-danger">Meeting ID is required</small>
+        </div>
+
+    </div>
+    <div class=" mb-3">
+        <label>Client</label>
+        <select formControlName="clientId" class="form-control bg-light">
+            <option *ngFor="let client of clients;" [value]="client.clientId">{{client.name}}</option>
+        </select>
+        <div
+            *ngIf="meetingForm.controls.clientId.invalid && (meetingForm.controls.clientId.dirty || meetingForm.controls.clientId.touched)">
+            <small class="text-danger">Client is required</small>
+        </div>
+    </div>
+    <div class=" mb-3">
+        <label>Total person</label>
+        <input type="number" formControlName="totalNumberOfPerson" class="form-control bg-light">
+        <div
+            *ngIf="meetingForm.controls.totalNumberOfPerson.invalid && (meetingForm.controls.totalNumberOfPerson.dirty || meetingForm.controls.totalNumberOfPerson.touched)">
+            <small class="text-danger">Total number of persons is required</small>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>Date and Time</label>
+        <input type="datetime-local" formControlName="dateTime" class="form-control bg-light">
+        <div
+            *ngIf="meetingForm.controls.dateTime.invalid && (meetingForm.controls.dateTime.dirty || meetingForm.controls.dateTime.touched)">
+            <small class="text-danger">Date and Time is required</small>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <input type="text" formControlName="status" class="form-control bg-light">
+        <div
+            *ngIf="meetingForm.controls.status.invalid && (meetingForm.controls.dateTime.dirty || meetingForm.controls.status.touched)">
+            <small class="text-danger">Status is required</small>
+        </div>
+
+    </div>
+    <div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </div>
+</form>
